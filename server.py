@@ -27,12 +27,12 @@ def kirim_pesan(client, pesan):
 
 # Mengirim semua pesan ke client yang terhubung dengan server
 def kirim_semua_pesan(from_username, pesan):
-    for user in client_aktif:
+    for client in client_aktif:
         try:
-            kirim_pesan(user[1], pesan)
+            kirim_pesan(client[1], pesan)
         except ConnectionResetError:
-            print(f'Koneksi dengan {user[0]} ditutup secara paksa.')
-            client_aktif.remove(user)
+            print(f'Koneksi dengan {client[0]} ditutup secara paksa.')
+            client_aktif.remove(client)
 
 # Handle client
 def client_hand(client):

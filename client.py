@@ -20,7 +20,6 @@ def add_pesan(pesan):
 def connect():
     try:
         # CONNECT KE SERVER
-        global client  # Menandai variabel sebagai global
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client.connect((HOST, PORT))
         print('Berhasil terhubung ke server')
@@ -39,14 +38,20 @@ def connect():
     username_textbox.config(state=tk.DISABLED)
     tombol_username.config(state=tk.DISABLED)
 
-def kirim_pesan():
-    pesan = pesan_textbox.get()
-    if pesan != '':
-        client.sendall(pesan.encode())
-        latar_pesan.delete(0, len(pesan))
+    # Menyimpan objek client ke dalam atribut root
+    root.client = client
 
+def kirim_pesan():
+    client = root.client  # Mendapatkan objek client dari atribut root
+    if client is not None:
+        pesan = pesan_textbox.get()
+        if pesan != '':
+            client.sendall(pesan.encode())
+            latar_pesan.delete(0, len(pesan))
+        else:
+            messagebox.showerror("Pesan kosong", "Pesan tidak boleh kosong")
     else:
-        messagebox.showerror("Pesan kosong", "Pesan tidak boleh kosong")
+        messagebox.showerror("Koneksi tidak tersedia", "Tidak terhubung ke server")
 
 root = tk.Tk()
 root.geometry("600x600")
