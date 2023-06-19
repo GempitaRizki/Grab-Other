@@ -21,4 +21,13 @@ It's just that there is still one function that is still lacking, 'client' defin
 
 ![Screenshot 2023-06-18 012816](https://github.com/GempitaRizki/Grab-Other/assets/38187462/5262ca49-2487-41e3-859d-3f10f40d057a)
 
+19/06/2023
+Added pusher to view logs directly, but still one problem occurs. This socket-based server is not supported by [Vercel](https://github.com/vercel) so I can't get it online
+
+do a `git clone` if you really want to see the result
+
+![Screenshot 2023-06-19 155220](https://github.com/GempitaRizki/Python-Socket/assets/38187462/d0fba3b8-ec50-4dc6-b9fd-b61885dda19d)
+
+
+
 
